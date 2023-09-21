@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head> 
+    <style>
+        body{
+            background-image: url("https://source.unsplash.com/1200x900/?hospital");
+            background-repeat: no-repeat;
+            background-size: 1500px 1050px; 
+        }
+        .Bita{
+            position:absolute;
+            right:20px;
+            text-decoration: none;
+            color:black;
+        }
+        .Bita:hover{
+            color:white;
+        }
+    </style>
+    
+    <body  ><center>
+        <span>Welcome,{{user.username}}! </span>
+       <a href="{%url 'logout'%}" class="Bita"><h2>logout</a></h2>
+        {% for gsk in gskl %}
+        <table border=1>
+            
+    <p>
+        
+      <th>Add New Patient:{{ gsk.Add_NewPatient }} <br>
+        Add Treatment Details:{{ gsk.Add_TreatmentDetails }} <br>
+        Occupied Beds:  {{ gsk.Occupied_Beds }}<br>
+        Available Beds:  {{ gsk.Available_Beds }} <br></th>
+    </table>
+      <a href="{% url 'Patient_update' gsk.pk %}">Edit</a>
+      <a
+        href="{% url 'Patient_delete' gsk.pk %}"
+        onclick="return confirm('Are you sure you want to delete this task?');"
+        >Delete</a
+    
+        >
+    
+    </p>
+    {% endfor %}
+    
+    <a href="{% url 'Patient_create' %}">Create Task</a></br></br>
+    
+</center>       
+    </body>
+</html>
